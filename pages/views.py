@@ -5,7 +5,8 @@ from pages.models import Team
 def home(request):
 	teams = Team.objects.all()
 	data = {
-		'teams': teams
+		'teams': teams,
+		"home_page": "active", # new info here
 	}
 	return render(request, 'pages/home.html', data)
 
@@ -19,7 +20,8 @@ def about(request):
 
 
 def services(request):
-	return render(request, 'pages/services.html')
+	data = {"services_page": "active"} # new info here
+	return render(request, 'pages/services.html', data)
 
 
 def contact(request):
