@@ -9761,8 +9761,8 @@ input, input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{
 }
 
 
-.navbar-nav .nav-link.active {
-    color: red;
+a.nav-link.active{
+  color: #f0151f !important;
 }
 
 
