@@ -126,85 +126,80 @@
         <!-- Slick slider area start -->
         <div class="slick-slider-area clearfix">
             <div class="row slick-carousel" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
-                {% if featured_cars%}
-                    {% for featured_car in featured_cars%}
-                    <div class="slick-slide-item">
-                        <div class="car-box-3">
-                            <div class="car-thumbnail">
-                                <a href="car-details.html" class="car-img">
-                                    <div class="tag-2">Featued</div>
-                                    <div class="price-box">
-                                        <span class="del"><del>$805.00</del></span>
-                                        <br>
-                                        <span>${{featured_car.price | intcomma}}</span>
-                                    </div>
-                                    <img class="d-block w-100" src="{{featured_car.car_photo.url}}" alt="car" style="min-height: 262px; max-height: 262px;">
-                                </a>
-                                <div class="carbox-overlap-wrapper">
-                                    <div class="overlap-box">
-                                        <div class="overlap-btns-area">
-                                            <div class="car-magnify-gallery">
-                                                <a href="{{featured_car.car_photo.url}}" class="overlap-btn">
-                                                    <i class="fa fa-expand"></i>
-                                                    <img class="hidden" src="{{featured_car.car_photo.url}}">
-                                                </a>
+                
+                {% for featured_car in featured_cars %}
+                <div class="slick-slide-item">
+                    <div class="car-box-3">
+                        <div class="car-thumbnail">
+                            <a href="{% url 'car_detail' latest_car.id %}" class="car-img">
+                                <div class="tag-2">Featured</div>
+                                <div class="price-box">
+                                    <span class="del"><del>$805.00</del></span>
+                                    <br>
+                                    <span>${{featured_car.price | intcomma }}</span>
+                                </div>
+                                <img class="d-block w-100" src="{{featured_car.car_photo.url}}" alt="car" style="min-height: 262px; max-height: 262px;">
+                            </a>
+                            <div class="carbox-overlap-wrapper">
+                                <div class="overlap-box">
+                                    <div class="overlap-btns-area">
+                                        <div class="car-magnify-gallery">
+                                            <a href="{{featured_car.car_photo.url}}" class="overlap-btn">
+                                                <i class="fa fa-expand"></i>
+                                                <img class="hidden" src="{featured_car.car_photo.url}}">
+                                            </a>
 
-                                                {% if featured_car.car_photo_1 %}
-                                                <a href="{{featured_car.car_photo_1.url}}" class="hidden">
-                                                    <img class="hidden" src="{{featured_car.car_photo_1.url}}">
-                                                </a>
-                                                {% endif %}
+                                            {% if featured_car.car_photo_1 %}
+                                            <a href="{{featured_car.car_photo_1.url}}" class="hidden">
+                                                <img class="hidden" src="{{featured_car.car_photo_1.url}}">
+                                            </a>
+                                            {% endif %}
 
-                                                {% if featured_car.car_photo_2 %}
-                                                <a href="{{featured_car.car_photo_2.url}}" class="hidden">
-                                                    <img class="hidden" src="{{featured_car.car_photo_2.url}}">
-                                                </a>
-                                                {% endif %}
+                                            {% if featured_car.car_photo_2 %}
+                                            <a href="{{featured_car.car_photo_2.url}}" class="hidden">
+                                                <img class="hidden" src="{{featured_car.car_photo_2.url}}">
+                                            </a>
+                                            {% endif %}
 
-                                                {% if featured_car.car_photo_3 %}
-                                                <a href="{{featured_car.car_photo_3.url}}" class="hidden">
-                                                    <img class="hidden" src="{{featured_car.car_photo_3.url}}">
-                                                </a>
-                                                {% endif %}
+                                            {% if featured_car.car_photo_3 %}
+                                            <a href="{{featured_car.car_photo_3.url}}" class="hidden">
+                                                <img class="hidden" src="{{featured_car.car_photo_3.url}}">
+                                            </a>
+                                            {% endif %}
 
-                                                {% if featured_car.car_photo_4 %}
-                                                <a href="{{featured_car.car_photo_4.url}}" class="hidden">
-                                                    <img class="hidden" src="{{featured_car.car_photo_4.url}}">
-                                                </a>
-                                                {% endif %}
-                                            </div>
+                                            {% if featured_car.car_photo_4 %}
+                                            <a href="{{featured_car.car_photo_4.url}}" class="hidden">
+                                                <img class="hidden" src="{{featured_car.car_photo_4.url}}">
+                                            </a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="detail">
-                                <h1 class="title">
-                                    <a href="car-details.html">{{featured_car.car_title}}</a>
-                                </h1>
-                                <div class="location">
-                                    <a href="car-details.html">
-                                        <i class="flaticon-pin"></i>{{featured_car.state}}, {{featured_car.city}}
-                                    </a>
-                                </div>
-                                <ul class="facilities-list clearfix">
-                                    <li>{{featured_car.fuel_type}}</li>
-                                    <li>{{featured_car.miles | intcomma}} km</li>
-                                    <li>{{featured_car.transmission}}</li>
-                                    <li>{{featured_car.body_style}}</li>
-                                    <li>{{featured_car.color}}</li>
-                                    <li>{{featured_car.year}}</li>
-                                </ul>
+                        </div>
+                        <div class="detail">
+                            <h1 class="title">
+                                <a href="">{{featured_car.car_title}}</a>
+                            </h1>
+                            <div class="location">
+                                <a href="{% url 'car_detail' latest_car.id %}">
+                                    <i class="flaticon-pin"></i>{{featured_car.state}}, {{featured_car.city}}
+                                </a>
                             </div>
+                            <ul class="facilities-list clearfix">
+                                <li>{{featured_car.fuel_type}}</li>
+                                <li>{{featured_car.miles | intcomma}}</li>
+                                <li>{{featured_car.transmission}}</li>
+                                <li>{{featured_car.body_style}}</li>
+                                <li>{{featured_car.color}}</li>
+                                <li>{{featured_car.year}}</li>
+                            </ul>
                         </div>
                     </div>
-                    {% endfor %}
-                {% else %}
-                <div class="slick-slide-item">
-                    <p>No featured car found!</p>
-                </div>    
-                {% endif %}
-            </div>
+                </div>
+                {% endfor %}
 
+            </div>
             <div class="slick-btn">
                 <div class="slick-prev slick-arrow-buton sab-4">
                     <i class="fa fa-angle-left"></i>
@@ -213,7 +208,6 @@
                     <i class="fa fa-angle-right"></i>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -228,17 +222,18 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <div class="row">
+
             {% for latest_car in latest_cars %}
             <div class="col-lg-4 col-md-6">
                 <div class="car-box">
                     <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
+                        <a href="{% url 'car_detail' latest_car.id %}" class="car-img">
                             <div class="tag">For Sale</div>
                             <img class="d-block w-100" src="{{latest_car.car_photo.url}}" alt="car" style="min-height: 262px; max-height: 262px;">
                             <div class="facilities-list clearfix">
                                 <ul>
                                     <li>
-                                        <span><i class="flaticon-way"></i></span>{{latest_car.miles | intcomma}} km
+                                        <span><i class="flaticon-way"></i></span>{{latest_car.miles | intcomma }} km
                                     </li>
                                     <li>
                                         <span><i class="flaticon-calendar-1"></i></span>{{latest_car.year}}
@@ -253,34 +248,34 @@
                             <div class="overlap-box">
                                 <div class="overlap-btns-area">
                                     <div class="car-magnify-gallery">
-                                        <a href="{{latest_car.car_photo.url}}" class="overlap-btn">
-                                            <i class="fa fa-expand"></i>
-                                            <img class="hidden" src="{{latest_car.car_photo.url}}">
-                                        </a>
+                                            <a href="{{latest_car.car_photo.url}}" class="overlap-btn">
+                                                <i class="fa fa-expand"></i>
+                                                <img class="hidden" src="{latest_car.car_photo.url}}">
+                                            </a>
 
-                                        {% if latest_car.car_photo_1 %}
-                                        <a href="{{latest_car.car_photo_1.url}}" class="hidden">
-                                            <img class="hidden" src="{{latest_car.car_photo_1.url}}">
-                                        </a>
-                                        {% endif %}
+                                            {% if latest_car.car_photo_1 %}
+                                            <a href="{{latest_car.car_photo_1.url}}" class="hidden">
+                                                <img class="hidden" src="{{latest_car.car_photo_1.url}}">
+                                            </a>
+                                            {% endif %}
 
-                                        {% if latest_car.car_photo_2 %}
-                                        <a href="{{latest_car.car_photo_2.url}}" class="hidden">
-                                            <img class="hidden" src="{{latest_car.car_photo_2.url}}">
-                                        </a>
-                                        {% endif %}
+                                            {% if latest_car.car_photo_2 %}
+                                            <a href="{{latest_car.car_photo_2.url}}" class="hidden">
+                                                <img class="hidden" src="{{latest_car.car_photo_2.url}}">
+                                            </a>
+                                            {% endif %}
 
-                                        {% if latest_car.car_photo_3 %}
-                                        <a href="{{latest_car.car_photo_3.url}}" class="hidden">
-                                            <img class="hidden" src="{{latest_car.car_photo_3.url}}">
-                                        </a>
-                                        {% endif %}
+                                            {% if latest_car.car_photo_3 %}
+                                            <a href="{{latest_car.car_photo_3.url}}" class="hidden">
+                                                <img class="hidden" src="{{latest_car.car_photo_3.url}}">
+                                            </a>
+                                            {% endif %}
 
-                                        {% if latest_car.car_photo_4 %}
-                                        <a href="{{latest_car.car_photo_4.url}}" class="hidden">
-                                            <img class="hidden" src="{{latest_car.car_photo_4.url}}">
-                                        </a>
-                                        {% endif %}
+                                            {% if latest_car.car_photo_4 %}
+                                            <a href="{{latest_car.car_photo_4.url}}" class="hidden">
+                                                <img class="hidden" src="{{latest_car.car_photo_4.url}}">
+                                            </a>
+                                            {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -288,11 +283,11 @@
                     </div>
                     <div class="detail">
                         <h1 class="title">
-                            <a href="car-details.html">{{latest_car.car_title}}</a>
+                            <a href="{% url 'car_detail' latest_car.id %}">{{latest_car.car_title}}</a>
                         </h1>
                         <div class="location">
-                            <a href="car-details.html">
-                                <i class="flaticon-pin"></i>{{latest_car.state}}, {{latest_car.city}},
+                            <a href="{% url 'car_detail' latest_car.id %}">
+                                <i class="flaticon-pin"></i>{{latest_car.state}}, {{latest_car.city}}
                             </a>
                         </div>
                     </div>
@@ -301,12 +296,13 @@
                             <p class="cartype">{{latest_car.body_style}}</p>
                         </div>
                         <div class="pull-right">
-                            <p class="price">${{latest_car.price | intcomma}}</p>
+                            <p class="price">${{latest_car.price | intcomma }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            {% endfor %}
+            {% endfor %}            
+
         </div>
     </div>
 </div>
@@ -380,7 +376,6 @@
 <!-- Intro section end -->
 
 
-
 <!-- Full Page Search -->
 <div id="full-page-search">
     <button type="button" class="close">×</button>
@@ -415,7 +410,7 @@
                                         <span class="del-2">$1050.00</span>
                                     </div>
                                     <div class="">
-                                        <a href="car-details.html" class="btn btn-md btn-round btn-theme">Convertible</a>
+                                        <a href="{% url 'car_detail' latest_car.id %}" class="btn btn-md btn-round btn-theme">Convertible</a>
                                     </div>
                                 </div>
                             </div>
@@ -453,7 +448,7 @@
                                 <div class="description">
                                     <h3>Description</h3>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
-                                    <a href="car-details.html" class="btn btn-md btn-round btn-theme">Show Detail</a>
+                                    <a href="{% url 'car_detail' latest_car.id %}" class="btn btn-md btn-round btn-theme">Show Detail</a>
                                 </div>
                             </div>
                         </div>

@@ -11,7 +11,7 @@ def home(request):
 	data = {
 		'teams': teams,
 		'featured_cars': featured_cars,
-		'latest_cars': latest_cars
+		'latest_cars': latest_cars,
 	}
 	return render(request, 'pages/home.html', data)
 
@@ -25,7 +25,6 @@ def about(request):
 
 
 def services(request):
-	data = {"services_page": "active"} # new info here
 	return render(request, 'pages/services.html', data)
 
 
