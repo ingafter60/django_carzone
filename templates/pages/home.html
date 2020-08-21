@@ -131,7 +131,7 @@
                 <div class="slick-slide-item">
                     <div class="car-box-3">
                         <div class="car-thumbnail">
-                            <a href="#car_detail" class="car-img">
+                            <a href="{% url 'car_detail' featured_car.id %}" class="car-img">
                                 <div class="tag-2">Featured</div>
                                 <div class="price-box">
                                     <span class="del"><del>$805.00</del></span>
@@ -179,10 +179,10 @@
                         </div>
                         <div class="detail">
                             <h1 class="title">
-                                <a href="">{{featured_car.car_title}}</a>
+                                <a href="{% url 'car_detail' featured_car.id %}">{{featured_car.car_title}}</a>
                             </h1>
                             <div class="location">
-                                <a href="#car_detail">
+                                <a href="{% url 'car_detail' featured_car.id %}">
                                     <i class="flaticon-pin"></i>{{featured_car.state}}, {{featured_car.city}}
                                 </a>
                             </div>
@@ -227,7 +227,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="car-box">
                     <div class="car-thumbnail">
-                        <a href="#car_detail" class="car-img">
+                        <a href="{% url 'car_detail' latest_car.id %}" class="car-img">
                             <div class="tag">For Sale</div>
                             <img class="d-block w-100" src="{{latest_car.car_photo.url}}" alt="car" style="min-height: 262px; max-height: 262px;">
                             <div class="facilities-list clearfix">
