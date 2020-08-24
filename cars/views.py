@@ -37,8 +37,24 @@ def car_detail(request, id):
 	return render(request, 'cars/car_detail.html', data)
 
 
+# def search(request):
+# 	cars = Car.objects.order_by('-created_date')
+
+# 	data = {
+# 		'cars':cars
+# 	}
+# 	return render(request, 'cars/search.html', data)
+
+# SEARCH BASED-KEYWORD
 def search(request):
 	cars = Car.objects.order_by('-created_date')
+
+	# if has keyword request from the url
+	if 'keyword' in request.GET:
+		keyword = request.GET['keyword']
+		# check if keyword is not blank, find the keyword in the hole of the description
+		if keyword:
+			cars = cars.filter(description__icontains=keyword)
 
 	data = {
 		'cars':cars
