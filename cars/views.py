@@ -56,6 +56,41 @@ def search(request):
 		if keyword:
 			cars = cars.filter(description__icontains=keyword)
 
+	# if has keyword request from the url
+	if 'model' in request.GET:
+		model = request.GET['model']
+		# check if keyword is not blank, find the keyword in the hole of the description
+		if model:
+			cars = cars.filter(model__iexact=model)
+
+	# if has keyword request from the url
+	if 'city' in request.GET:
+		city = request.GET['city']
+		# check if keyword is not blank, find the keyword in the hole of the description
+		if city:
+			cars = cars.filter(city__iexact=city)
+
+	# if has keyword request from the url
+	if 'year' in request.GET:
+		year = request.GET['year']
+		# check if keyword is not blank, find the keyword in the hole of the description
+		if year:
+			cars = cars.filter(year__iexact=year)
+
+	# if has keyword request from the url
+	if 'body_style' in request.GET:
+		body_style = request.GET['body_style']
+		# check if keyword is not blank, find the keyword in the hole of the description
+		if body_style:
+			cars = cars.filter(body_style__iexact=body_style)
+
+	# price range 
+	if 'min_price' in request.GET:
+		min_price = request.GET['min_price']
+		max_price = request.GET['max_price']
+		if max_price:
+			cars = cars.filter(price__gte=min_price, price__lte=max_price)
+
 	data = {
 		'cars':cars
 	}
