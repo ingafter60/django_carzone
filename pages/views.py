@@ -8,10 +8,12 @@ def home(request):
 	# Get all featured cars
 	featured_cars = Car.objects.order_by('-created_date').filter(is_featured=True)
 	latest_cars = Car.objects.order_by('-created_date')
+	search_fields = Car.objects.values('model', 'city', 'year', 'body_style')
 	data = {
 		'teams': teams,
 		'featured_cars': featured_cars,
 		'latest_cars': latest_cars,
+		'search_fields': search_fields
 	}
 	return render(request, 'pages/home.html', data)
 
