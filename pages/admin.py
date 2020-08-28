@@ -1,3 +1,4 @@
+# pages/admin.py
 from django.contrib import admin
 from pages.models import Team
 from django.utils.html import format_html

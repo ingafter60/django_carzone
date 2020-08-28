@@ -11,7 +11,7 @@ def home(request):
 	# search_fields = Car.objects.values('model', 'city', 'year', 'body_style')
 	model_search = Car.objects.values_list('model', flat=True).distinct()
 	city_search = Car.objects.values_list('city', flat=True).distinct()
-	year_search = Car.objects.values_list('year', flat=True).distinct()
+	year_search = Car.objects.values_list('year', flat=True).distinct().order_by('year')
 	body_style_search = Car.objects.values_list('body_style', flat=True).distinct()
 	data = {
 		'teams': teams,
