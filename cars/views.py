@@ -23,8 +23,20 @@ def cars(request):
 	#4. Store the page in paged_cars 
 	paged_cars = paginator.get_page(page)
 	#5. Store now the page in data
+
+	# Car search
+	model_search = Car.objects.values_list('model', flat=True).distinct()
+	city_search = Car.objects.values_list('city', flat=True).distinct()
+	year_search = Car.objects.values_list('year', flat=True).distinct().order_by('year')
+	body_style_search = Car.objects.values_list('body_style', flat=True).distinct()
+
 	data = {
 		'cars':paged_cars,
+		# Car search
+		'model_search': model_search,
+		'city_search': city_search,
+		'year_search': year_search,
+		'body_style_search': body_style_search,		
 	}
 	return render(request, 'cars/cars.html', data)
 
@@ -48,6 +60,12 @@ def car_detail(request, id):
 # SEARCH BASED-KEYWORD
 def search(request):
 	cars = Car.objects.order_by('-created_date')
+	# Car search
+	model_search = Car.objects.values_list('model', flat=True).distinct()
+	city_search = Car.objects.values_list('city', flat=True).distinct()
+	year_search = Car.objects.values_list('year', flat=True).distinct().order_by('year')
+	body_style_search = Car.objects.values_list('body_style', flat=True).distinct()
+	transmission_search = Car.objects.values_list('transmission', flat=True).distinct()
 
 	# if has keyword request from the url
 	if 'keyword' in request.GET:
@@ -92,7 +110,13 @@ def search(request):
 			cars = cars.filter(price__gte=min_price, price__lte=max_price)
 
 	data = {
-		'cars':cars
+		'cars':cars,
+		# Car search
+		'model_search': model_search,
+		'city_search': city_search,
+		'year_search': year_search,
+		'body_style_search': body_style_search,
+		'transmission_search': transmission_search,		
 	}
 	return render(request, 'cars/search.html', data)
 
