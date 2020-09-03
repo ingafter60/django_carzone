@@ -42,7 +42,6 @@ def login(request):
 
 	return render(request, 'accounts/login.html', data)
 
-
 """
 =================USER LOGIN END=============
 """
@@ -142,7 +141,9 @@ def register(request):
 =================USER REGISTRATION END=============
 """
 
-
+"""
+=================USER DASHBOARD START=============
+"""
 def dashboard(request):
 
 	data = {
@@ -151,6 +152,22 @@ def dashboard(request):
 
 	return render(request, 'accounts/dashboard.html', data)
 
+"""
+=================USER DASHBOARD END=============
+"""
 
+
+"""
+=================USER LOGOUT START=============
+"""
 def logout(request):
+
+	if request.method == 'POST':
+		auth.logout(request)
+		messages.success(request, 'You are successfully logged out!')
+		return redirect('home')	
 	return redirect('home')	
+
+"""
+=================USER LOGOUT END=============
+"""
