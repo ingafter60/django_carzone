@@ -3,13 +3,53 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 
+"""
+=================USER LOGIN START=============
+"""
+
+# 1. Static
+# def login(request):
+
+# 	data = {
+# 		'login_page':'active'
+# 	}
+
+# 	return render(request, 'accounts/login.html')
+
+# # 2. Dynamic
 def login(request):
+
+	if request.method == 'POST':
+		username = request.POST['username']
+		password = request.POST['password']
+
+		user = auth.authenticate(username=username, password=password)
+
+		# If usename and password exists
+		if user is not None:
+			auth.login(request, user)
+			messages.success(request, 'You are now logged in!')
+			return redirect('dashboard')
+
+		# If usename and password exists/invalid
+		else:
+			messages.error(request, 'Invalid login credentials')
+			return redirect('login')
 
 	data = {
 		'login_page':'active'
-	}
+	}			
 
-	return render(request, 'accounts/login.html')
+	return render(request, 'accounts/login.html', data)
+
+
+"""
+=================USER LOGIN END=============
+"""
+
+"""
+=================USER REGISTRATION START=============
+"""
 
 # STATIC template
 # def register(request):
@@ -47,6 +87,10 @@ def login(request):
 
 # 48/56. User Registration
 def register(request):
+
+	data = {
+		'register_page':'active'
+	}
 
 	if request.method == 'POST':
 		firstname			= request.POST['firstname']
@@ -91,17 +135,21 @@ def register(request):
 			return redirect('register')
 
 	else: 
-		return render(request, 'accounts/register.html')
 
+		return render(request, 'accounts/register.html', data)
 
-
-
-
-
+"""
+=================USER REGISTRATION END=============
+"""
 
 
 def dashboard(request):
-	return render(request, 'accounts/dashboard.html')
+
+	data = {
+		'dashboard_page':'active'
+	}	
+
+	return render(request, 'accounts/dashboard.html', data)
 
 
 def logout(request):
