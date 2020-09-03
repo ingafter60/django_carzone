@@ -1,1 +1,18 @@
-LOGIN
+<!-- templates/accounts/login.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="sub-banner overview-bgi">
+    <div class="container breadcrumb-area">
+        <div class="breadcrumb-areas">
+            <h1>Login To Your Account</h1>
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'home' %}">Home /</a></li>
+                <li class="{{login_page}}">Login</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}
