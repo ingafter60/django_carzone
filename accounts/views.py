@@ -89,7 +89,7 @@ def login(request):
 def register(request):
 
 	data = {
-		'register_page':'active'
+		'register_page':'active',
 	}
 
 	if request.method == 'POST':

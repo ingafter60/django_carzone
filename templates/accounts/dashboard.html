@@ -10,7 +10,7 @@
             <h1>Dashboard</h1>
             <ul class="breadcrumbs">
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li class="{{dashboard_page}}">Username</li>
+                <li class="{{dashboard_page}}">{{request.user.username}}</li>
             </ul>
         </div>
     </div>
@@ -24,7 +24,7 @@
 	<!-- Django message end -->
 
 	<div class="main-title" style="text-align:left !important;">
-        <h1>Welcome <span>User</span></h1>
+        <h1>Welcome <span>{{request.user.username}}</span></h1>
         <p>Here are the cars that you have inquired about</p>
     </div>
 	<table class="table table-hover">

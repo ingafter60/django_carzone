@@ -6115,7 +6115,8 @@ footer {
 
 .sub-banner .breadcrumbs .active {
     margin-left: 3px;
-    color: #fff;
+    /*color: #fff;*/
+    color: red;
 }
 
 .sub-banner .breadcrumbs .active:before {
@@ -9766,3 +9767,7 @@ input, input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{
   background: red;
 }
 
+/*.sub-banner .breadcrumbs li.acive {
+    color: red !important;
+
+}*/
