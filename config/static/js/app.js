@@ -479,3 +479,8 @@ $(function () {
         }
     }).trigger("resize");
 })(jQuery);
+
+// Self-close alert message in 5 secons
+setTimeout(function(){
+    $(message).fadeOut('slow');
+}, 5000)
