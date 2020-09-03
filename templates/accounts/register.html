@@ -22,50 +22,98 @@
       <div class="row">
          <div class="col-lg-12 col-md-12">
             <div class="form-section">
+            	<!-- Logo start -->
                <div class="logo-2">
                   <a href="index.html">
                   <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
                   </a>
                </div>
+            	<!-- Logo end -->
+
                <h3>Create an account</h3>
-               <form action="#" method="GET">
+
+               <!-- Register form start -->
+               <form 
+               	action="{% url 'register' %}" 
+               	method="POST">
+
+               	{% csrf_token %}
+
                   <div class="form-group form-box">
-                     <input type="text" name="firstname" class="input-text" placeholder="First Name">
+                     <input 
+                     	type="text" 
+                     	name="firstname" 
+                     	class="input-text" 
+                     	placeholder="First Name" required="">
                      <i class="fa fa-user"></i>
                   </div>
                   <div class="form-group form-box">
-                     <input type="text" name="lastname" class="input-text" placeholder="Last Name">
+                     <input 
+                     	type="text" 
+                     	name="lastname" 
+                     	class="input-text" 
+                     	placeholder="Last Name" required="">
                      <i class="fa fa-user"></i>
                   </div>
                   <div class="form-group form-box">
-                     <input type="text" name="username" class="input-text" placeholder="Username">
+                     <input 
+                     	type="text" 
+                     	name="username" 
+                     	class="input-text" 
+                     	placeholder="Username" required="">
                      <i class="fa fa-user"></i>
                   </div>
                   <div class="form-group form-box">
-                     <input type="email" name="email" class="input-text" placeholder="Email Address">
+                     <input 
+                     	type="email" 
+                     	name="email" 
+                     	class="input-text" 
+                     	placeholder="Email Address" required="">
                      <i class="flaticon-mail"></i>
                   </div>
                   <div class="form-group form-box">
-                     <input type="password" name="password" class="input-text" placeholder="Password">
+                     <input 
+                     	type="password" 
+                     	name="password" 
+                     	class="input-text" 
+                     	placeholder="Password" required="">
                      <i class="flaticon-lock"></i>
                   </div>
                   <div class="form-group form-box">
-                     <input type="password" name="confirm_password" class="input-text" placeholder="Confirm Password">
+                     <input 
+                     	type="password" 
+                     	name="confirm_password" 
+                     	class="input-text" 
+                     	placeholder="Confirm Password" required="">
                      <i class="flaticon-lock"></i>
                   </div>
                   <div class="form-group mb-0 clearfix">
-                     <button type="submit" class="btn-md btn-theme float-left">Register</button>
+                     <button 
+                     	type="submit" 
+                     	class="btn-md btn-theme float-left">Register</button>
                   </div>
                   <div class="extra-login clearfix">
                      <span>Or Login With</span>
                   </div>
                   <div class="clearfix"></div>
                   <ul class="social-list">
-                     <li><a href="#" class="facebook-bg"><i class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li>
-                     <li><a href="#" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
+                     <li>
+                     	<a 
+                     		href="#" 
+                     		class="facebook-bg">
+                     		<i class="fa fa-facebook facebook-i"></i>
+                     		<span>Facebook</span></a></li>
+                     <li>
+                     	<a 
+                     		href="#" 
+                     		class="google-bg">
+                     		<i class="fa fa-google google-i"></i>
+                     		<span>Google</span></a></li>
                   </ul>
                </form>
-               <p>Already a member? <a href="login.html" class="thembo"> Login here</a></p>
+               <!-- Register form end -->
+
+               <p>Already a member? <a href="{% url 'login' %}" class="thembo"> Login here</a></p>
             </div>
          </div>
       </div>

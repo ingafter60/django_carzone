@@ -13,11 +13,18 @@ def login(request):
 
 def register(request):
 
-	data = {
-		'register_page':'active'
-	}
+	if request.method == 'POST':
+		print('this is POST request')
+		return redirect('register')
 
-	return render(request, 'accounts/register.html')
+	else: 
+		
+		return render(request, 'accounts/register.html')
+
+	# data = {
+	# 	'register_page':'active'
+	# }
+
 
 
 def dashboard(request):
