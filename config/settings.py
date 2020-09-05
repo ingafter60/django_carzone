@@ -32,13 +32,20 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
 
-    # new
+    # --------new --------
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'cars.apps.CarsConfig',
     'ckeditor',
     'django.contrib.humanize',
-    # end  new
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    # --------new end --------
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -155,3 +162,7 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+SITE_ID= 1
+
+LOGIN_REDIRECT_URL = 'dashboard'

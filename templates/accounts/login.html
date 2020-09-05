@@ -6,6 +6,9 @@
 {% load static %}
 
 {% block content %}
+{% load socialaccount %}
+{% providers_media_js %}
+
 <!-- Sub Banner start -->
 <div class="sub-banner overview-bgi">
     <div class="container breadcrumb-area">
@@ -75,7 +78,7 @@
                   <ul class="social-list">
                      <li>
                      	<a 
-                     		href="#" 
+                     		href="{% provider_login_url 'facebook' method='oauth2' %}" 
                      		class="facebook-bg">
                      		<i class="fa fa-facebook facebook-i"></i>
                      		<span>Facebook</span></a></li>
