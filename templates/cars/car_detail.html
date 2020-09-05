@@ -246,14 +246,18 @@
             type="text" 
             name="first_name" 
             class="form-control" 
-            placeholder="First Name" required>
+            placeholder="First Name" 
+            {% if user.is_authenticated %} value="{{user.first_name}}" {% endif %}
+            required>
         </div>
         <div class="col">
           <input 
             type="text" 
             name="last_name" 
             class="form-control" 
-            placeholder="Last Name" required>
+            placeholder="Last Name" 
+            {% if user.is_authenticated %} value="{{user.last_name}}" {% endif %}
+            required>
         </div>
       </div>
     </div>
@@ -302,7 +306,9 @@
                 type="email" 
                 name="email" 
                 class="form-control" 
-                placeholder="Email Address" required>
+                placeholder="Email Address" 
+                {% if user.is_authenticated %} value="{{user.email}}" {% endif %}
+                required>
         </div>
         <div class="col">
             <label for="phone" class="col-form-label">or by phone at</label>
