@@ -2,8 +2,9 @@
 
 from django.urls import path
 
-from accounts import views
+from contacts import views
 
 urlpatterns = [
 	path('inquiry', views.inquiry, name="inquiry"),
 ]
+
