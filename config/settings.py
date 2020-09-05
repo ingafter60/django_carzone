@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'cars.apps.CarsConfig',
+    'contacts.apps.ContactsConfig',
     'ckeditor',
     'django.contrib.humanize',
     'django.contrib.sites',
